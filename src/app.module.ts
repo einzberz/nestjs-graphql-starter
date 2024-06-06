@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { BookModule } from './book/book.module';
 import { PersonModule } from './person/person.module';
 
 @Module({
@@ -12,7 +11,6 @@ import { PersonModule } from './person/person.module';
       autoSchemaFile: 'schema.gql',
       playground: true,
     }),
-    BookModule,
     PersonModule,
   ],
 })
