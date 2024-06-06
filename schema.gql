@@ -26,7 +26,7 @@ type Query {
   getPerson(id: ID!): Person!
   getAllPersons: [Person!]!
   users: [User!]!
-  user(id: Int!): User!
+  user(id: String!): User!
 }
 
 type Mutation {
@@ -35,7 +35,7 @@ type Mutation {
   deletePerson(id: ID!): Person!
   createUser(createUserInput: CreateUserInput!): User!
   updateUser(updateUserInput: UpdateUserInput!): User!
-  removeUser(id: Int!): User!
+  removeUser(id: String!): User!
 }
 
 input InputPerson {
@@ -72,5 +72,5 @@ input UpdateUserInput {
   email: String
   gender: String
   birthDay: String
-  id: Int!
+  id: String!
 }

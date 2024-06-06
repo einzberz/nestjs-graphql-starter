@@ -1,6 +1,5 @@
 [
   {
-    "id": 1,
     "username": "janedoe3",
     "firstName": "Jane",
     "lastName": "Doe",
@@ -9,7 +8,6 @@
     "birthDay": "1992-02-02"
   },
   {
-    "id": 2,
     "username": "janedoe",
     "firstName": "Jane",
     "lastName": "Doe",
@@ -18,7 +16,6 @@
     "birthDay": "1992-02-02"
   },
   {
-    "id": 3,
     "username": "bobjones",
     "firstName": "Bob",
     "lastName": "Jones",
