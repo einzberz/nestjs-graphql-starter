@@ -10,12 +10,26 @@ type Book {
   writer: [String!]
 }
 
+type Person {
+  id: ID!
+  username: String!
+  firstName: String!
+  lastName: String
+  email: String
+  gender: String!
+  birthDay: String
+}
+
 type Query {
   getBook: Book!
+  getPerson(id: ID!): Person!
 }
 
 type Mutation {
   createBook(input: InputBook!): Book!
+  createPerson(input: InputPerson!): Person!
+  updatePerson(id: ID!, input: UpdatePerson!): Person!
+  deletePerson(id: ID!): Person!
 }
 
 input InputBook {
@@ -23,4 +37,22 @@ input InputBook {
   price: Float
   description: String
   writer: [String!]!
+}
+
+input InputPerson {
+  username: String!
+  firstName: String!
+  lastName: String
+  email: String
+  gender: String!
+  birthDay: String
+}
+
+input UpdatePerson {
+  username: String
+  firstName: String
+  lastName: String
+  email: String
+  gender: String
+  birthDay: String
 }
