@@ -1,10 +1,7 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { InputType, Field } from '@nestjs/graphql';
 
-@ObjectType()
-export class Person {
-  @Field(() => ID)
-  id: string;
-
+@InputType()
+export class CreateUserInput {
   @Field(() => String)
   username: string;
 

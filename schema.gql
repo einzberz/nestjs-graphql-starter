@@ -12,15 +12,30 @@ type Person {
   birthDay: String
 }
 
+type User {
+  id: ID!
+  username: String!
+  firstName: String!
+  lastName: String
+  email: String
+  gender: String!
+  birthDay: String
+}
+
 type Query {
   getPerson(id: ID!): Person!
   getAllPersons: [Person!]!
+  users: [User!]!
+  user(id: Int!): User!
 }
 
 type Mutation {
   createPerson(input: InputPerson!): Person!
   updatePerson(id: ID!, input: UpdatePerson!): Person!
   deletePerson(id: ID!): Person!
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: Int!): User!
 }
 
 input InputPerson {
@@ -39,4 +54,23 @@ input UpdatePerson {
   email: String
   gender: String
   birthDay: String
+}
+
+input CreateUserInput {
+  username: String!
+  firstName: String!
+  lastName: String
+  email: String
+  gender: String!
+  birthDay: String
+}
+
+input UpdateUserInput {
+  username: String
+  firstName: String
+  lastName: String
+  email: String
+  gender: String
+  birthDay: String
+  id: Int!
 }
