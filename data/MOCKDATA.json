@@ -1,15 +1,15 @@
 [
   {
-    "id": "1",
-    "username": "johndoe",
-    "firstName": "John",
+    "id": 1,
+    "username": "janedoe3",
+    "firstName": "Jane",
     "lastName": "Doe",
-    "email": "john.doe@example.com",
-    "gender": "Male",
-    "birthDay": "1990-01-01"
+    "email": "jane.doe@example.com",
+    "gender": "Female",
+    "birthDay": "1992-02-02"
   },
   {
-    "id": "2",
+    "id": 2,
     "username": "janedoe",
     "firstName": "Jane",
     "lastName": "Doe",
@@ -18,7 +18,7 @@
     "birthDay": "1992-02-02"
   },
   {
-    "id": "3",
+    "id": 3,
     "username": "bobjones",
     "firstName": "Bob",
     "lastName": "Jones",
