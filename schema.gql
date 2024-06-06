@@ -2,14 +2,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Book {
-  id: ID!
-  name: String
-  description: String
-  price: Float
-  writer: [String!]
-}
-
 type Person {
   id: ID!
   username: String!
@@ -21,22 +13,13 @@ type Person {
 }
 
 type Query {
-  getBook: Book!
   getPerson(id: ID!): Person!
 }
 
 type Mutation {
-  createBook(input: InputBook!): Book!
   createPerson(input: InputPerson!): Person!
   updatePerson(id: ID!, input: UpdatePerson!): Person!
   deletePerson(id: ID!): Person!
-}
-
-input InputBook {
-  name: String!
-  price: Float
-  description: String
-  writer: [String!]!
 }
 
 input InputPerson {
