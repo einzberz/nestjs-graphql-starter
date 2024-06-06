@@ -8,7 +8,7 @@ export class PersonResolver {
         { id: '1', username: 'johndoe', firstName: 'John', lastName: 'Doe', email: 'john.doe@example.com', gender: 'Male', birthDay: '1990-01-01' },
         { id: '2', username: 'janedoe', firstName: 'Jane', lastName: 'Doe', email: 'jane.doe@example.com', gender: 'Female', birthDay: '1992-02-02' },
         { id: '3', username: 'bobjones', firstName: 'Bob', lastName: 'Jones', email: 'bob.jones@example.com', gender: 'Male', birthDay: '1985-03-03' }
-    ]; // This is just an example. In a real application, you'd use a database.
+    ];
 
     @Query(returns => Person)
     getPerson(@Args('id', { type: () => ID }) id: string): Person {
