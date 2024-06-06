@@ -14,6 +14,7 @@ type Person {
 
 type Query {
   getPerson(id: ID!): Person!
+  getAllPersons: [Person!]!
 }
 
 type Mutation {
