@@ -22,6 +22,17 @@ type User {
   birthDay: String
 }
 
+"""
+DateTime in ISO 8601 format. 
+	 
+  The format is "YYYY-MM-DDTHH:mm:ss.sssZ", 
+	 
+  The letter "T" is used to separate the date and time components.  where "Z" indicates the UTC timezone. 
+	  
+  Example: "2023-09-13T15:30:00.000Z".
+"""
+scalar Date
+
 type Query {
   getPerson(id: ID!): Person!
   getAllPersons: [Person!]!
