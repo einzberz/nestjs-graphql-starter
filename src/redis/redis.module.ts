@@ -1,6 +1,9 @@
 import { Module } from '@nestjs/common';
 import { RedisModule as IoRedisModule } from '@nestjs-modules/ioredis';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { MessageModule } from 'src/message/message.module';
+import { RedisService } from './redis.service';
+import { PubSubModule } from 'src/common/pubsub.module';
 
 @Module({
   imports: [
@@ -18,8 +21,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         },
       }),
     }),
+    MessageModule,
+    PubSubModule,
   ],
-  controllers: [],
-  providers: [],
+  providers: [RedisService],
+  exports: [RedisService],
 })
 export class RedisModule {}

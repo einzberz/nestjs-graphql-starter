@@ -22,6 +22,18 @@ type User {
   birthDay: String
 }
 
+type Message {
+  id: ID!
+  content: String!
+  sender: String!
+  createdAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 """
 DateTime in ISO 8601 format. 
 	 
@@ -41,12 +53,18 @@ type Query {
 }
 
 type Mutation {
+  createMessage(createMessageInput: CreateMessageInput!): Message!
   createPerson(input: InputPerson!): Person!
   updatePerson(id: ID!, input: UpdatePerson!): Person!
   deletePerson(id: ID!): Person!
   createUser(createUserInput: CreateUserInput!): User!
   updateUser(updateUserInput: UpdateUserInput!): User!
   removeUser(id: String!): User!
+}
+
+input CreateMessageInput {
+  content: String!
+  sender: String!
 }
 
 input InputPerson {
@@ -84,4 +102,8 @@ input UpdateUserInput {
   gender: String
   birthDay: String
   id: String!
+}
+
+type Subscription {
+  messageCreated: Message!
 }
