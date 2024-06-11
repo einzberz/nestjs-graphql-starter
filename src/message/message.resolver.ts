@@ -22,6 +22,6 @@ export class MessageResolver {
 
   @Subscription(() => Message)
   messageCreated() {
-    return this.pubSub.asyncIterator('messageCreated');
+    return this.pubSub.asyncIterator('messageChannel');
   }
 }
