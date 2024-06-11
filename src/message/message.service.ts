@@ -10,20 +10,20 @@ import { Redis } from 'ioredis';
 
 @Injectable()
 export class MessageService {
-  private publisher: Redis;
+  // private publisher: Redis;
   constructor(
     @InjectModel(Message.name) private messageModel: Model<Message>,
     @Inject('PUB_SUB') private readonly pubSub: PubSub,
     @InjectRedis() private readonly redis: Redis,
   ) {
-    this.publisher = new Redis();
+    // this.publisher = new Redis();
   }
 
   async create(createMessageInput: CreateMessageInput): Promise<Message> {
     const createdMessage = new this.messageModel(createMessageInput);
     await createdMessage.save();
     this.pubSub.publish('messageChannel', { messageCreated: createdMessage });
-    this.publishMessage(createdMessage);
+    // this.publishMessage(createdMessage);
     return createdMessage;
   }
 
@@ -59,7 +59,7 @@ export class MessageService {
   }
   // for publisher only (if on subscribe cannot use)
   async publishMessage(message: any) {
-    this.publisher.publish('messageChannel', JSON.stringify(message));
+    this.redis.publish('messageChannel', JSON.stringify(message));
     console.log('Publishing message:', JSON.stringify(message));
   }
 }
