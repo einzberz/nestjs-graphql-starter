@@ -13,7 +13,7 @@ export class UsersResolver {
     try {
       return await this.usersService.create(createUserInput);
     } catch (error) {
-      throw new Error('Error creating user');
+      throw new Error(error);
     }
   }
 

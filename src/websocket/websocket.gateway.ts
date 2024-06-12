@@ -48,5 +48,6 @@ export class WebsocketsGateway
     // console.log(`Message from client ${client.id}: ${payload}`);
     this.cts.handleMessage(client.id, payload);
     this.stc.broadcastMessage('hello from server');
+    this.stc.sendMessageToClient(client.id, 'TEST');
   }
 }

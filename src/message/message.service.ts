@@ -15,9 +15,8 @@ export class MessageService {
     @InjectModel(Message.name) private messageModel: Model<Message>,
     @Inject('PUB_SUB') private readonly pubSub: PubSub,
     @InjectRedis() private readonly redis: Redis,
-  ) {
-    // this.publisher = new Redis();
-  }
+    // @InjectRedis() private readonly subscriber: Redis,
+  ) {}
 
   async create(createMessageInput: CreateMessageInput): Promise<Message> {
     const createdMessage = new this.messageModel(createMessageInput);
@@ -29,15 +28,15 @@ export class MessageService {
 
   async onModuleInit() {
     // Subscribe to message-related events
-    this.redis.subscribe('messageChannel', (err, count) => {
-      if (err) {
-        console.error('Failed to subscribe: %s', err.message);
-      } else {
-        console.log(
-          `Subscribed successfully! This client is currently subscribed to ${count} channels.`,
-        );
-      }
-    });
+    // this.redis.subscribe('messageChannel', (err, count) => {
+    //   if (err) {
+    //     console.error('Failed to subscribe: %s', err.message);
+    //   } else {
+    //     console.log(
+    //       `Subscribed successfully! This client is currently subscribed to ${count} channels.`,
+    //     );
+    //   }
+    // });
 
     this.redis.on('message', async (ch, msg) => {
       console.log(`Received message on channel ${ch}:`, msg);
