@@ -7,6 +7,9 @@ import { RedisModule } from './redis/redis.module';
 import { CommonModule } from './common/common.module';
 import { MessageModule } from './message/message.module';
 import { PubSubModule } from './common/pubsub.module';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { WebSocketModule } from './websocket/websocket.gateway.module';
 
 @Module({
   imports: [
@@ -21,8 +24,9 @@ import { PubSubModule } from './common/pubsub.module';
     RedisModule,
     MessageModule,
     PubSubModule,
+    WebSocketModule,
   ],
-  controllers: [],
-  providers: [],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
