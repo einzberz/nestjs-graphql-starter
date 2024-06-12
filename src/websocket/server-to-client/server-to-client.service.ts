@@ -22,7 +22,7 @@ export class ServerToClientService {
     if (client) {
       client.emit('messageToClient', message);
       const result = await this.userService.findOne('66696fc2ba7c95ffa3a735a5');
-      console.log(result)
+      console.log(result);
       client.emit('messageToClient', result);
     }
   }
