@@ -34,20 +34,28 @@ export class WebsocketsGateway
 
   handleConnection(client: Socket) {
     console.log(`Client connected: ${client.id}`);
+    const roomId = client.handshake.query.userId as string;
     // this.stc.broadcastMessage('hello from server');
     this.clients.add(client);
+    client.emit('join room ', roomId);
+    client.join(roomId);
+    console.log(roomId);
+    this.stc.joinRoom(roomId);
   }
 
   handleDisconnect(client: Socket) {
     console.log(`Client disconnected: ${client.id}`);
+    client.leave('1234');
+    console.log(`User ${client.id} left room: 1234}`);
     this.clients.delete(client);
   }
 
   @SubscribeMessage('messageToServer')
   handleMessage(client: Socket, payload: any): void {
-    // console.log(`Message from client ${client.id}: ${payload}`);
+    const roomId = client.handshake.query.userId as string;
+    // receive message from client
     this.cts.handleMessage(client.id, payload);
-    this.stc.broadcastMessage('hello from server');
-    this.stc.sendMessageToClient(client.id, 'TEST');
+    // send message to client
+    this.stc.sendMessageToRoom(roomId, client.id, 'hello');
   }
 }
