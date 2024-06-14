@@ -27,7 +27,7 @@ export class WebsocketsGateway
     private readonly cts: ClientToServerService,
     private readonly stc: ServerToClientService,
   ) {}
-  afterInit(server: Server) {
+  async afterInit(server: Server) {
     console.log('WebSocket Gateway initialized');
     this.stc.setServer(server);
   }
@@ -37,7 +37,6 @@ export class WebsocketsGateway
     const roomId = client.handshake.query.userId as string;
     // this.stc.broadcastMessage('hello from server');
     this.clients.add(client);
-    client.emit('join room ', roomId);
     client.join(roomId);
     console.log(roomId);
     this.stc.joinRoom(roomId);
